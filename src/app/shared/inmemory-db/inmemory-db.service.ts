@@ -1,13 +1,17 @@
-/* import { InMemoryDbService } from 'angular-in-memory-web-api'; */
-/* import { ChatDB } from './chat-db'; */
+import { InMemoryDbService } from "angular-in-memory-web-api";
+import { CountryDB } from "./countries";
 
-export class InMemoryDataService /* implements InMemoryDbService  */ {
+export class InMemoryDataService implements InMemoryDbService {
   createDb() {
+    let users = [
+      {
+        id: 1,
+        email: "mmartincorr@uoc.edu",
+        password: "asdf"
+      }
+    ];
     return {
-      /* Ejemplo:
-      'contacts': ChatDB.contacts,
-      'chat-collections': ChatDB.chatCollection,
-      'chat-user': ChatDB.user */
+      users: users
     };
   }
 }
