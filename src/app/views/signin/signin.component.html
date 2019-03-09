@@ -1,3 +1,17 @@
-<p>
-  signin works!
-</p>
+<form [formGroup]="signinForm" (ngSubmit)="login()">
+  <label>
+    Email:
+    <input type="text" formControlName="email" required />
+  </label>
+
+  <label>
+    Password:
+    <input type="password" formControlName="password" required />
+  </label>
+  <button type="submit" [disabled]="!signinForm.valid">Submit</button>
+  <p>
+    <button routerLink="/forgot-password" routerLinkActive="active">
+      Remember Password
+    </button>
+  </p>
+</form>

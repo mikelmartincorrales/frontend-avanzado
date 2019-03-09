@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { UsersService } from "../../shared/services/users.service";
-import { FormControl } from "@angular/forms";
+import { FormBuilder, Validators } from "@angular/forms";
 import { User } from "../../shared/models/User";
 
 @Component({
@@ -9,14 +9,25 @@ import { User } from "../../shared/models/User";
   styleUrls: ["./signin.component.scss"]
 })
 export class SigninComponent implements OnInit {
-  constructor(private _usersService: UsersService) {}
+  constructor(private _usersService: UsersService, private fb: FormBuilder) {}
 
   public users: User[] = [];
 
+  signinForm = this.fb.group({
+    email: ["", [Validators.required, Validators.email]],
+    password: ["", Validators.required]
+  });
+
   ngOnInit() {
+    // Test del Fake BackEnd
     this._usersService.getUsers().subscribe(response => {
       this.users = response;
       console.log(response);
     });
+  }
+
+  //Test del login. Mostrando en consola toda la info del form
+  login() {
+    console.log(this.signinForm);
   }
 }
