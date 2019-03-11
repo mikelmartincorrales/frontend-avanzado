@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { UsersService } from "../../shared/services/users.service";
 import { FormBuilder, Validators } from "@angular/forms";
 import { User } from "../../shared/models/User";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-signin",
@@ -9,7 +10,11 @@ import { User } from "../../shared/models/User";
   styleUrls: ["./signin.component.scss"]
 })
 export class SigninComponent implements OnInit {
-  constructor(private _usersService: UsersService, private fb: FormBuilder) {}
+  constructor(
+    private _usersService: UsersService,
+    private fb: FormBuilder,
+    private router: Router
+  ) {}
 
   public users: User[] = [];
 
@@ -29,5 +34,7 @@ export class SigninComponent implements OnInit {
   //Test del login. Mostrando en consola toda la info del form
   login() {
     console.log(this.signinForm);
+    // En este punto validaremo al usuario y si es correcto obtendremos su id
+    this.router.navigate(["/admin/dashboard/" + this.users[0].id]);
   }
 }
