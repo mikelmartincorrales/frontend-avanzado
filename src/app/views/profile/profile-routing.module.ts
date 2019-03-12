@@ -6,6 +6,8 @@ import { ProfileCompanyComponent } from "./company/profile-company.component";
 import { ProfileStudentDetailComponent } from "./student/profile-student-detail.component";
 import {ProfileStudentAcademicComponent} from "./student/profile-student-academic.component";
 import {ProfileStudentExperienceComponent} from "./student/profile-student-experience.component";
+import {ProfileStudentLanguageComponent} from "./student/profile-student-language.component";
+import {ProfileCompanyDetailComponent} from "./company/profile-company-detail.component";
 
 const routes: Routes = [
   {
@@ -26,7 +28,7 @@ const routes: Routes = [
   },
   {
     path: "student/:id/languages",
-    component: ProfileComponent
+    component: ProfileStudentLanguageComponent
   },
   {
     path: "company/:id",
@@ -34,7 +36,7 @@ const routes: Routes = [
   },
   {
     path: "company/:id/detail",
-    component: ProfileComponent
+    component: ProfileCompanyDetailComponent
   }
 ];
 
