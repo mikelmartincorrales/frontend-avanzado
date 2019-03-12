@@ -2,7 +2,8 @@
   <div class="row">
     <div class="col-md-6 offset-md-3">
       <div class="alert alert-info">
-        Esta vista detectará el tipo estudiante/empresa y mostrará el dashboard adecuado. Por el momento mostramos todos los enlaces al resto de vistas.
+        Esta vista detectará el tipo estudiante/empresa y mostrará el dashboard
+        adecuado. Por el momento mostramos todos los enlaces al resto de vistas.
       </div>
       <p>
         <button
@@ -24,8 +25,21 @@
       </p>
 
       <p>
-        <button routerLink="/offers" routerLinkActive="active" class="btn">
-          Offers
+        <button
+          routerLink="/admin/offers/student/1"
+          routerLinkActive="active"
+          class="btn"
+        >
+          Offers Student
+        </button>
+      </p>
+      <p>
+        <button
+          routerLink="/admin/offers/company/2"
+          routerLinkActive="active"
+          class="btn"
+        >
+          Offers Company
         </button>
       </p>
       <p>

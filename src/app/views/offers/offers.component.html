@@ -1,3 +1,67 @@
-<p>
-  offers works!
-</p>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 offset-md-3">
+      <h1>Publicar nueva oferta</h1>
+      <form [formGroup]="offersForm" (ngSubmit)="save()">
+          <label> Puesto:</label>
+          <input
+            type="text"
+            formControlName="job"
+            class="form-control"
+            name="job"
+          />
+
+          <label> Descripción:</label>
+          <textarea
+            formControlName="description"
+            class="form-control"
+            name="description"
+            id=""
+            cols="30"
+            rows="10"
+          ></textarea>
+
+          <label> Provincia:</label>
+          <select formControlName="state" class="form-control" name="state">
+            <option value="Bizkaia">Bizkaia</option>
+            <option value="Gipuzkoa">Gipuzkoa</option>
+            <option value="Araba">Araba</option>
+          </select>
+
+          <!--El desplegable de municipio posiblemente se pueda resolver con un ngfor recorriendo una lista en función de la selección de provincia. De momento unos valores fijos-->
+          <label> Municipio:</label>
+          <select formControlName="city" class="form-control" name="city">
+            <option value="Bilbao">Bilbao</option>
+            <option value="Donostia">Donostia</option>
+            <option value="Gazteiz">Gazteiz</option>
+          </select>
+
+          <label> Familia profesional:</label>
+          <input
+            type="text"
+            formControlName="family"
+            class="form-control"
+            name="family"
+          />
+
+          <label> Titulos destino:</label>
+          <input
+            type="text"
+            formControlName="titles"
+            class="form-control"
+            name="titles"
+          />
+
+        <button
+          type="submit"
+          class="btn"
+          [disabled]="!offersForm.valid"
+        >
+          Guardar
+        </button>
+        <p>Form Value: {{ offersForm.value | json }}</p>
+        <p>Form Status: {{ offersForm.status }}</p>
+      </form>
+    </div>
+  </div>
+</div>
