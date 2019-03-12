@@ -1,0 +1,215 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 offset-md-3">
+      <h1>Añadir formación académica</h1>
+      <form [formGroup]="profileStudentExperienceForm" (ngSubmit)="save()">
+        <label> Tipo de título</label>
+        <select
+          formControlName="titletype"
+          class="form-control"
+          name="titletype"
+        >
+          <option value="university">Título universitario</option>
+          <option value="cicle">Ciclo formativo</option>
+          <option value="other">Otro título</option>
+        </select>
+
+        <!-- Título Universitario -->
+        <div
+          formGroupName="university"
+          *ngIf="f.titletype.value === 'university'"
+        >
+          <label> Nombre del centro:</label>
+          <input
+            type="text"
+            formControlName="universitycentre"
+            class="form-control"
+            name="universitycentre"
+          />
+
+          <label> Título:</label>
+          <input
+            type="text"
+            formControlName="universitytitle"
+            class="form-control"
+            name="universitytitle"
+          />
+          <div
+            class="text-danger"
+            *ngIf="
+              f.university.controls.universitytitle.errors &&
+              f.university.controls.universitytitle.touched
+            "
+          >
+            <div
+              *ngIf="f.university.controls.universitytitle.errors.required"
+            >
+              Nombre de título requerido.
+            </div>
+          </div>
+
+          <label> Fecha del título:</label>
+          <input
+            type="text"
+            formControlName="universitytitledate"
+            class="form-control"
+            name="universitytitledate"
+          />
+          <div
+            class="text-danger"
+            *ngIf="
+              f.university.controls.universitytitledate.errors &&
+              f.university.controls.universitytitledate.touched
+            "
+          >
+            <div
+              *ngIf="f.university.controls.universitytitledate.errors.pattern"
+            >
+              El formato debe ser DD/MM/AAA.
+            </div>
+          </div>
+
+          <input
+            type="checkbox"
+            name="universitybiling"
+            value="universitybiling"
+          />
+          Formación bilingüe<br />
+
+          <label> Certificado:</label>
+          <input
+            type="file"
+            formControlName="universitycert"
+            class="form-control"
+            name="universitycert"
+          />
+        </div>
+        <!-- Ciclo formativo -->
+        <div formGroupName="cicle" *ngIf="f.titletype.value === 'cicle'">
+          <label> Centro educativo:</label>
+          <select
+            formControlName="ciclecentre"
+            class="form-control"
+            name="ciclecentre"
+          >
+            <option value="CentroA">CentroA</option>
+            <option value="CentroB">CentroB</option>
+            <option value="CentroC">CentroC</option>
+          </select>
+
+          <label> Familia profesional:</label>
+          <select
+            formControlName="ciclefamily"
+            class="form-control"
+            name="ciclefamily"
+          >
+            <option value="Familia A">Familia A</option>
+            <option value="Familia B">Familia B</option>
+            <option value="Familia C">Familia C</option>
+          </select>
+
+          <label> Grado:</label>
+          <select
+            formControlName="ciclegrade"
+            class="form-control"
+            name="ciclegrade"
+          >
+            <option value="Grado Superior">Grado Superior</option>
+            <option value="Grado Medio">Grado Medio</option>
+            <option value="FP básica">FP básica</option>
+          </select>
+
+          <!-- Los elementos del desplegable dependerán de  ciclefamily y ciclegrade-->
+          <!-- El componente tendrá una función para obtener la lista-->
+          <label> Ciclo:</label>
+          <select
+            formControlName="cicletitle"
+            class="form-control"
+            name="cicletitle"
+          >
+            <option value="Opción A">Opción A</option>
+            <option value="Opción B">Opción B</option>
+            <option value="Opción C">Opción C</option>
+          </select>
+          <div
+            class="text-danger"
+            *ngIf="
+              f.cicle.controls.cicletitle.errors &&
+              f.cicle.controls.cicletitledate.touched
+            "
+          >
+            <div *ngIf="f.cicle.controls.cicletitledate.errors.required">
+              Nombre de ciclo requerido.
+            </div>
+          </div>
+
+          <label> Fecha del título:</label>
+          <input
+            type="text"
+            formControlName="cicletitledate"
+            class="form-control"
+            name="cicletitledate"
+          />
+          <div
+            class="text-danger"
+            *ngIf="
+              f.cicle.controls.cicletitledate.errors &&
+              f.cicle.controls.cicletitledate.touched
+            "
+          >
+            <div *ngIf="f.cicle.controls.cicletitledate.errors.pattern">
+              El formato debe ser DD/MM/AAA.
+            </div>
+          </div>
+
+          <input type="checkbox" name="cicledual" value="cicledual" /> Formación
+          dual<br />
+
+          <input type="checkbox" name="ciclebiling" value="ciclebiling" />
+          Formación bilingüe<br />
+
+          <label> Certificado:</label>
+          <input
+            type="file"
+            formControlName="ciclecert"
+            class="form-control"
+            name="ciclecert"
+          />
+        </div>
+        <!-- Otro -->
+        <div formGroupName="other" *ngIf="f.titletype.value === 'other'">
+          <label> Título:</label>
+          <input
+            type="text"
+            formControlName="othertitle"
+            class="form-control"
+            name="othertitle"
+          />
+        </div>
+        <div
+            class="text-danger"
+            *ngIf="
+              f.other.controls.othertitle.errors &&
+              f.other.controls.othertitle.touched
+            "
+          >
+            <div
+              *ngIf="f.other.controls.othertitle.errors.required"
+            >
+              Nombre de título requerido.
+            </div>
+          </div>
+
+        <button
+          type="submit"
+          class="btn"
+          [disabled]="!profileStudentExperienceForm.valid"
+        >
+          Guardar
+        </button>
+        <p>Form Value: {{ profileStudentExperienceForm.value | json }}</p>
+        <p>Form Status: {{ profileStudentExperienceForm.status }}</p>
+      </form>
+    </div>
+  </div>
+</div>

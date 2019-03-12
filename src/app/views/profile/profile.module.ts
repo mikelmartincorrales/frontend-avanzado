@@ -6,6 +6,7 @@ import { ProfileComponent } from "./profile.component";
 import { ProfileStudentComponent } from "./student/profile-student.component";
 import { ProfileStudentDetailComponent } from "./student/profile-student-detail.component";
 import { ProfileStudentAcademicComponent } from "./student/profile-student-academic.component";
+import { ProfileStudentExperienceComponent } from "./student/profile-student-experience.component";
 import { ProfileCompanyComponent } from "./company/profile-company.component";
 
 @NgModule({
@@ -14,7 +15,8 @@ import { ProfileCompanyComponent } from "./company/profile-company.component";
     ProfileStudentComponent,
     ProfileStudentDetailComponent,
     ProfileCompanyComponent,
-    ProfileStudentAcademicComponent
+    ProfileStudentAcademicComponent,
+    ProfileStudentExperienceComponent
   ],
   imports: [CommonModule, ProfileRoutingModule, ReactiveFormsModule]
 })
