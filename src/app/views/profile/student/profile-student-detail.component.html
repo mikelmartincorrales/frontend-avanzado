@@ -4,6 +4,7 @@
       <h1>Detalles de perfil de estudiante</h1>
       <form [formGroup]="profileStudentDetailForm" (ngSubmit)="save()">
         <h3>Datos personales</h3>
+
         <label> Nombre:</label>
         <input
           type="text"
@@ -12,8 +13,7 @@
           name="firstname"
           required
         />
-
-        <div *ngIf="f.firstname.errors">
+        <div class="text-danger" *ngIf="f.firstname.errors && f.firstname.touched">
           <div *ngIf="f.firstname.errors.required">
             Nombre requerido.
           </div>
@@ -22,6 +22,7 @@
             especiales.
           </div>
         </div>
+
         <label> Apellidos:</label>
         <input
           type="text"
@@ -30,8 +31,7 @@
           name="lastname"
           required
         />
-
-        <div *ngIf="f.lastname.errors">
+        <div class="text-danger" *ngIf="f.lastname.errors && f.firstname.touched">
           <div *ngIf="f.lastname.errors.required">
             Apellidos requeridos.
           </div>
@@ -40,6 +40,7 @@
             especiales.
           </div>
         </div>
+
         <label> Avatar:</label>
         <input
           type="file"
@@ -55,11 +56,12 @@
           class="form-control"
           name="birthdate"
         />
-        <div *ngIf="f.birthdate.errors" class="invalid-feedback">
+        <div class="text-danger" *ngIf="f.birthdate.errors && f.birthdate.touched">
           <div *ngIf="f.birthdate.errors.pattern">
-            El formato debe ser DD/MM/AAA.
+            El formato debe ser DD/MM/AAAA.
           </div>
         </div>
+
         <label> Teléfono:</label>
         <input
           type="text"
@@ -90,13 +92,14 @@
           class="form-control"
           name="docnum"
         />
-
-        <div *ngIf="f.docnum.errors">
+        <div class="text-danger" *ngIf="f.docnum.errors && f.docnum.touched">
           <div *ngIf="f.docnum.errors.docError">
             Número de documento incorrecto
           </div>
         </div>
+
         <div formGroupName="addressgroup">
+
           <h3>Dirección</h3>
           <label> Dirección:</label>
           <input
@@ -121,8 +124,10 @@
             <option value="Gazteiz">Gazteiz</option>
           </select>
         </div>
+
         <div formGroupName="moreinfo">
           <h3>Más datos</h3>
+
           <label> Sobre mí:</label>
           <textarea
             formControlName="about"

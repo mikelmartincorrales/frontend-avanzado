@@ -33,7 +33,7 @@ export class ProfileStudentDetailComponent implements OnInit {
       ]
     ],
     avatar: [""],
-    birthdate: ["", Validators.pattern("^d{2}/d{2}/d{4}$")],
+    birthdate: ["", Validators.pattern("^\\d{1,2}\/\\d{1,2}\/\\d{4}$")],
     phone: [""],
     phone2: [""],
     doctype: [""],

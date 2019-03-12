@@ -4,6 +4,7 @@ import { ProfileComponent } from "./profile.component";
 import { ProfileStudentComponent } from "./student/profile-student.component";
 import { ProfileCompanyComponent } from "./company/profile-company.component";
 import { ProfileStudentDetailComponent } from "./student/profile-student-detail.component";
+import {ProfileStudentAcademicComponent} from "./student/profile-student-academic.component";
 
 const routes: Routes = [
   {
@@ -16,7 +17,7 @@ const routes: Routes = [
   },
   {
     path: "student/:id/academic",
-    component: ProfileComponent
+    component: ProfileStudentAcademicComponent
   },
   {
     path: "student/:id/experience",
