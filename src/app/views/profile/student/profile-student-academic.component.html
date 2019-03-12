@@ -9,7 +9,7 @@
           class="form-control"
           name="titletype"
         >
-          <option value="univesity">Título universitario</option>
+          <option value="university">Título universitario</option>
           <option value="cicle">Ciclo formativo</option>
           <option value="other">Otro título</option>
         </select>
@@ -17,6 +17,7 @@
         <!-- Título Universitario -->
         <div
           formGroupName="university"
+          *ngIf="f.titletype.value === 'university'"
         >
           <label> Nombre del centro:</label>
           <input
@@ -33,6 +34,19 @@
             class="form-control"
             name="universitytitle"
           />
+          <div
+            class="text-danger"
+            *ngIf="
+              f.university.controls.universitytitle.errors &&
+              f.university.controls.universitytitle.touched
+            "
+          >
+            <div
+              *ngIf="f.university.controls.universitytitle.errors.required"
+            >
+              Nombre de título requerido.
+            </div>
+          </div>
 
           <label> Fecha del título:</label>
           <input
@@ -41,15 +55,19 @@
             class="form-control"
             name="universitytitledate"
           />
-          <!-- <div
+          <div
             class="text-danger"
             *ngIf="
-              f.universitytitledate.errors && f.universitytitledate.touched"
+              f.university.controls.universitytitledate.errors &&
+              f.university.controls.universitytitledate.touched
+            "
           >
-            <div *ngIf="f.universitytitledate.errors.pattern">
+            <div
+              *ngIf="f.university.controls.universitytitledate.errors.pattern"
+            >
               El formato debe ser DD/MM/AAA.
             </div>
-          </div> -->
+          </div>
 
           <input
             type="checkbox"
@@ -67,7 +85,7 @@
           />
         </div>
         <!-- Ciclo formativo -->
-        <div formGroupName="cicle">
+        <div formGroupName="cicle" *ngIf="f.titletype.value === 'cicle'">
           <label> Centro educativo:</label>
           <select
             formControlName="ciclecentre"
@@ -113,6 +131,17 @@
             <option value="Opción B">Opción B</option>
             <option value="Opción C">Opción C</option>
           </select>
+          <div
+            class="text-danger"
+            *ngIf="
+              f.cicle.controls.cicletitle.errors &&
+              f.cicle.controls.cicletitledate.touched
+            "
+          >
+            <div *ngIf="f.cicle.controls.cicletitledate.errors.required">
+              Nombre de ciclo requerido.
+            </div>
+          </div>
 
           <label> Fecha del título:</label>
           <input
@@ -121,12 +150,17 @@
             class="form-control"
             name="cicletitledate"
           />
-          <!-- No se porqué motivo en este caso da un error de undefined. -->
-          <!-- <div class="text-danger" *ngIf="f.cicletitledate.errors && f.cicletitledate.touched">
-            <div *ngIf="f.cicletitledate.errors.pattern">
+          <div
+            class="text-danger"
+            *ngIf="
+              f.cicle.controls.cicletitledate.errors &&
+              f.cicle.controls.cicletitledate.touched
+            "
+          >
+            <div *ngIf="f.cicle.controls.cicletitledate.errors.pattern">
               El formato debe ser DD/MM/AAA.
             </div>
-          </div> -->
+          </div>
 
           <input type="checkbox" name="cicledual" value="cicledual" /> Formación
           dual<br />
@@ -143,7 +177,7 @@
           />
         </div>
         <!-- Otro -->
-        <div formGroupName="other">
+        <div formGroupName="other" *ngIf="f.titletype.value === 'other'">
           <label> Título:</label>
           <input
             type="text"
@@ -152,6 +186,19 @@
             name="othertitle"
           />
         </div>
+        <div
+            class="text-danger"
+            *ngIf="
+              f.other.controls.othertitle.errors &&
+              f.other.controls.othertitle.touched
+            "
+          >
+            <div
+              *ngIf="f.other.controls.othertitle.errors.required"
+            >
+              Nombre de título requerido.
+            </div>
+          </div>
 
         <button
           type="submit"
