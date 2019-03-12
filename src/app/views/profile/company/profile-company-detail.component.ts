@@ -1,9 +1,5 @@
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, Validators } from "@angular/forms";
-import {
-  dniValidator,
-  passportValidator
-} from "../../../shared/validators/document.validator";
 
 @Component({
   selector: "app-profile",

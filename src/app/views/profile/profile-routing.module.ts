@@ -1,6 +1,7 @@
 import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
 import { ProfileComponent } from "./profile.component";
+import { ProfileConfigComponent } from "./profile-config.component";
 import { ProfileStudentComponent } from "./student/profile-student.component";
 import { ProfileCompanyComponent } from "./company/profile-company.component";
 import { ProfileStudentDetailComponent } from "./student/profile-student-detail.component";
@@ -10,6 +11,10 @@ import {ProfileStudentLanguageComponent} from "./student/profile-student-languag
 import {ProfileCompanyDetailComponent} from "./company/profile-company-detail.component";
 
 const routes: Routes = [
+  {
+    path: "config",
+    component: ProfileConfigComponent
+  },
   {
     path: "student/:id",
     component: ProfileStudentComponent

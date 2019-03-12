@@ -3,6 +3,7 @@ import { CommonModule } from "@angular/common";
 import { ReactiveFormsModule } from "@angular/forms";
 import { ProfileRoutingModule } from "./profile-routing.module";
 import { ProfileComponent } from "./profile.component";
+import { ProfileConfigComponent } from "./profile-config.component";
 import { ProfileStudentComponent } from "./student/profile-student.component";
 import { ProfileStudentDetailComponent } from "./student/profile-student-detail.component";
 import { ProfileStudentAcademicComponent } from "./student/profile-student-academic.component";
@@ -14,6 +15,7 @@ import { ProfileCompanyDetailComponent } from "./company/profile-company-detail.
 @NgModule({
   declarations: [
     ProfileComponent,
+    ProfileConfigComponent,
     ProfileStudentComponent,
     ProfileStudentDetailComponent,
     ProfileStudentAcademicComponent,
