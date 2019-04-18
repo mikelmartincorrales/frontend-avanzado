@@ -1,36 +1,42 @@
-import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { Router, ActivatedRoute } from '@angular/router';
-import { ProfileService } from '../../../../shared/services/profile.service';
-import { MockData } from 'src/app/shared/mock-data';
+import { Component, OnInit } from "@angular/core";
+import { FormGroup, FormControl, Validators } from "@angular/forms";
+import { Router, ActivatedRoute } from "@angular/router";
+import { MockData } from "src/app/shared/mock-data";
 import {
   Language,
   LanguageLevel,
   LanguageName
-} from 'src/app/shared/models/language.model';
-import { dateValidator } from 'src/app/shared/directives/date-validator.directive';
+} from "src/app/shared/models/language.model";
+import { dateValidator } from "src/app/shared/directives/date-validator.directive";
+import { Store, select } from "@ngrx/store";
+import { AppState } from "../../../../shared/state/root.state";
+import { selectUser } from "../../../../shared/state/user/selectors/user.selectors";
+import { UpdateUser } from "src/app/shared/state/user/actions/user.actions";
+import { User } from "src/app/shared/models/user.model";
 
 @Component({
-  selector: 'app-profile-language',
-  templateUrl: './profile-language.component.html',
-  styleUrls: ['./profile-language.component.scss']
+  selector: "app-profile-language",
+  templateUrl: "./profile-language.component.html",
+  styleUrls: ["./profile-language.component.scss"]
 })
 export class ProfileLanguageComponent implements OnInit {
   rForm: FormGroup;
   language: Language = {} as Language;
   languageLevels: LanguageLevel[];
   languageNames: LanguageName[];
+  user: User;
 
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private profileService: ProfileService
+    private _store: Store<AppState>
   ) {
     this.route.params.subscribe(params => {
-      const user = this.profileService.user;
+      this._store.pipe(select(selectUser)).subscribe(u => (this.user = u));
       const uid = +params.uid;
-      this.language = (user.languages.find(language => language.uid === uid) ||
-        {}) as Language;
+      this.language = (this.user.languages.find(
+        language => language.uid === uid
+      ) || {}) as Language;
     });
   }
   ngOnInit() {
@@ -63,24 +69,24 @@ export class ProfileLanguageComponent implements OnInit {
     return option1.uid === (option2 && option2.uid);
   }
   private update(language: Language) {
-    const user = this.profileService.user;
-    const languages = user.languages;
+    this._store.pipe(select(selectUser)).subscribe(u => (this.user = u));
+    const languages = this.user.languages;
     const foundIndex = languages.findIndex(
       _language => _language.uid === language.uid
     );
     languages[foundIndex] = language;
-    this.profileService.updateProfile(user);
-    this.router.navigate(['/admin/profile']);
+    this._store.dispatch(new UpdateUser({ ...this.user }));
+    this.router.navigate(["/admin/profile"]);
   }
   private save(language: Language) {
-    const user = this.profileService.user;
+    this._store.pipe(select(selectUser)).subscribe(u => (this.user = u));
     const _language = MockData.fakeIncreaseID<Language>(
-      user.languages,
+      this.user.languages,
       language
     );
-    user.languages = [...user.languages, _language];
-    this.profileService.updateProfile(user);
-    this.router.navigate(['/admin/profile']);
+    this.user.languages = [...this.user.languages, _language];
+    this._store.dispatch(new UpdateUser({ ...this.user }));
+    this.router.navigate(["/admin/profile"]);
   }
 
   saveOrUpdate(language: Language) {

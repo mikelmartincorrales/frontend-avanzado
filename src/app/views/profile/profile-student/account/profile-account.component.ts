@@ -1,21 +1,24 @@
-import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
-import { ProfileService } from '../../../../shared/services/profile.service';
-import { MockData } from 'src/app/shared/mock-data';
-import { dateValidator } from 'src/app/shared/directives/date-validator.directive';
+import { Component, OnInit } from "@angular/core";
+import { FormGroup, FormControl, Validators } from "@angular/forms";
+import { Router } from "@angular/router";
+import { MockData } from "src/app/shared/mock-data";
+import { dateValidator } from "src/app/shared/directives/date-validator.directive";
 import {
   User,
   DocumentType,
   Municipe,
   Province
-} from 'src/app/shared/models/user.model';
-import { documentNumberValidator } from 'src/app/shared/directives/document-number-validator.directive';
+} from "src/app/shared/models/user.model";
+import { documentNumberValidator } from "src/app/shared/directives/document-number-validator.directive";
+import { Store, select } from "@ngrx/store";
+import { AppState } from "../../../../shared/state/root.state";
+import { selectUser } from "../../../../shared/state/user/selectors/user.selectors";
+import { UpdateUser } from "src/app/shared/state/user/actions/user.actions";
 
 @Component({
-  selector: 'app-profile-account',
-  templateUrl: './profile-account.component.html',
-  styleUrls: ['./profile-account.component.scss']
+  selector: "app-profile-account",
+  templateUrl: "./profile-account.component.html",
+  styleUrls: ["./profile-account.component.scss"]
 })
 export class ProfileAccountComponent implements OnInit {
   rForm: FormGroup;
@@ -24,8 +27,8 @@ export class ProfileAccountComponent implements OnInit {
   municipes: Municipe[];
   provinces: Province[];
 
-  constructor(private router: Router, private profileService: ProfileService) {
-    this.user = this.profileService.user;
+  constructor(private router: Router, private _store: Store<AppState>) {
+    this._store.pipe(select(selectUser)).subscribe(u => (this.user = u));
   }
   ngOnInit() {
     this.loadSelectProperties();
@@ -89,11 +92,10 @@ export class ProfileAccountComponent implements OnInit {
   }
 
   public save() {
-    const user = { ...this.profileService.user, ...this.rForm.value };
-    this.profileService.user = user;
-    this.profileService.updateProfile(user);
-    this.router.navigate(['/admin/profile']);
+    this._store.dispatch(new UpdateUser({ ...this.user, ...this.rForm.value }));
+    this.router.navigate(["/admin/profile"]);
   }
+
   compareByUID(option1, option2) {
     return option1.uid === (option2 && option2.uid);
   }
