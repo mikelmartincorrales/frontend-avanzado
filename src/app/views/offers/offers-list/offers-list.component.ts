@@ -1,5 +1,4 @@
 import { Component, OnInit } from "@angular/core";
-import { OffersService } from "src/app/shared/services/offers.service";
 import { Offer } from "src/app/shared/models/offer.model";
 import { User } from "src/app/shared/models/user.model";
 import { Store, select } from "@ngrx/store";
