@@ -9,12 +9,12 @@ import { HttpClientInMemoryWebApiModule } from "angular-in-memory-web-api";
 import { FakeBackendService } from "./shared/inmemory-db/fake-backend.service";
 import { StoreModule } from "@ngrx/store";
 import { StoreRouterConnectingModule } from "@ngrx/router-store";
-import { reducers, metaReducers } from "./reducers";
 import { appReducers } from "./shared/state/root.reducer";
 import { StoreDevtoolsModule } from "@ngrx/store-devtools";
 import { environment } from "../environments/environment";
 import { EffectsModule } from "@ngrx/effects";
 import { UserEffects } from "./shared/state/user/effects/user.effects";
+import { OffersEffects } from "./shared/state/offers/effects/offers.effects";
 import { SigninService } from "./views/signin/signin.service";
 
 @NgModule({
@@ -27,8 +27,7 @@ import { SigninService } from "./views/signin/signin.service";
       dataEncapsulation: false
     }),
     StoreModule.forRoot(appReducers),
-    // StoreModule.forRoot(reducers, { metaReducers }),
-    EffectsModule.forRoot([UserEffects]),
+    EffectsModule.forRoot([UserEffects, OffersEffects]),
     !environment.production ? StoreDevtoolsModule.instrument() : [],
     StoreRouterConnectingModule.forRoot({ stateKey: "router" })
   ],

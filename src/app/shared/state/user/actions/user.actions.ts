@@ -5,9 +5,7 @@ export enum EUserActions {
   Login = "[User] Login",
   LoginSuccess = "[User] Login Success",
   UpdateUser = "[User] Update",
-  UpdateUserSuccess = "[User] UpdateUser Success",
-  GetUser = "[User] Get User",
-  GetUserSuccess = "[User] Get User Success"
+  UpdateUserSuccess = "[User] UpdateUser Success"
 }
 
 export interface AuthData {
@@ -25,15 +23,6 @@ export class LoginSuccess implements Action {
   constructor(public payload: User) {}
 }
 
-export class GetUser implements Action {
-  public readonly type = EUserActions.GetUser;
-}
-
-export class GetUserSuccess implements Action {
-  public readonly type = EUserActions.GetUserSuccess;
-  constructor(public payload: User) {}
-}
-
 export class UpdateUser implements Action {
   public readonly type = EUserActions.UpdateUser;
   constructor(public payload: User) {}
@@ -44,10 +33,4 @@ export class UpdateUserSuccess implements Action {
   constructor(public payload: User) {}
 }
 
-export type UserActions =
-  | Login
-  | LoginSuccess
-  | GetUser
-  | GetUserSuccess
-  | UpdateUser
-  | UpdateUserSuccess;
+export type UserActions = Login | LoginSuccess | UpdateUser | UpdateUserSuccess;

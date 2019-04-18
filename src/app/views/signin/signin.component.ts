@@ -34,26 +34,11 @@ export class SigninComponent implements OnInit {
     });
   }
 
-  // onSubmit() {
-  //   this.submitted = true;
-
-  //   this.signinService.login({ ...this.loginForm.value }).then(user => {
-  //     console.log(user);
-  //     if (!user) {
-  //       this.errorLogin = true;
-  //       return;
-  //     }
-  //     this.profileService.user = user;
-  //     this.router.navigate(["admin/dashboard"]);
-  //   });
-  // }
-
   onSubmit() {
     this.submitted = true;
     this._store.dispatch(new Login({ ...this.loginForm.value }));
 
     this.signinService.login({ ...this.loginForm.value }).then(user => {
-      console.log(user);
       if (!user) {
         this.errorLogin = true;
         return;

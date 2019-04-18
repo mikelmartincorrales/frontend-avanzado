@@ -20,12 +20,6 @@ export const userReducers = (
         user: action.payload
       };
     }
-    case EUserActions.GetUserSuccess: {
-      return {
-        ...state,
-        user: action.payload
-      };
-    }
     default:
       return state;
   }
