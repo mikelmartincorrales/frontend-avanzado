@@ -20,8 +20,10 @@ export class OffersListComponent implements OnInit {
   constructor(private _store: Store<AppState>) {
     this._store.dispatch(new GetOffers());
     this._store.pipe(select(selectUser)).subscribe(u => (this.user = u));
-    this._store.pipe(select(selectOffers)).subscribe(o => (this.offers = o));
-    this.selectOffers();
+    this._store.pipe(select(selectOffers)).subscribe(o => {
+      this.offers = o;
+      this.selectOffers();
+    });
   }
 
   private selectOffers() {
