@@ -1,8 +1,11 @@
 import { Component, OnInit } from "@angular/core";
-import { UsersService } from "../../shared/services/users.service";
-import { FormBuilder, Validators } from "@angular/forms";
-import { User } from "../../shared/models/User";
+import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { Router } from "@angular/router";
+import { SigninService } from "./signin.service";
+import { ProfileService } from "src/app/shared/services/profile.service";
+import { Store } from "@ngrx/store";
+import { AppState } from "../../shared/state/root.state";
+import { Login } from "src/app/shared/state/user/actions/user.actions";
 
 @Component({
   selector: "app-signin",
@@ -10,31 +13,38 @@ import { Router } from "@angular/router";
   styleUrls: ["./signin.component.scss"]
 })
 export class SigninComponent implements OnInit {
+  loginForm: FormGroup;
+  submitted = false;
+  errorLogin = false;
   constructor(
-    private _usersService: UsersService,
-    private fb: FormBuilder,
+    private signinService: SigninService,
+    private profileService: ProfileService,
+    private formBuilder: FormBuilder,
+    private _store: Store<AppState>,
     private router: Router
   ) {}
 
-  public users: User[] = [];
-
-  signinForm = this.fb.group({
-    email: ["", [Validators.required, Validators.email]],
-    password: ["", Validators.required]
-  });
-
   ngOnInit() {
-    // Test del Fake BackEnd
-    this._usersService.getUsers().subscribe(response => {
-      this.users = response;
-      console.log(response);
+    this.loginForm = this.formBuilder.group({
+      email: [
+        "carlos.caballero@gmail.com",
+        [Validators.email, Validators.required]
+      ],
+      password: ["1234", Validators.required]
     });
   }
 
-  //Test del login. Mostrando en consola toda la info del form
-  login() {
-    console.log(this.signinForm);
-    // En este punto validaremo al usuario y si es correcto obtendremos su id
-    this.router.navigate(["/admin/dashboard/" + this.users[0].id]);
+  onSubmit() {
+    this.submitted = true;
+    this._store.dispatch(new Login({ ...this.loginForm.value }));
+
+    this.signinService.login({ ...this.loginForm.value }).then(user => {
+      if (!user) {
+        this.errorLogin = true;
+        return;
+      }
+      this.profileService.user = user;
+      this.router.navigate(["admin/dashboard"]);
+    });
   }
 }

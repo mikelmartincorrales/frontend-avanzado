@@ -1,29 +1,24 @@
-import { NgModule } from "@angular/core";
-import { CommonModule } from "@angular/common";
-import { ReactiveFormsModule } from "@angular/forms";
-import { ProfileRoutingModule } from "./profile-routing.module";
-import { ProfileComponent } from "./profile.component";
-import { ProfileConfigComponent } from "./profile-config.component";
-import { ProfileStudentComponent } from "./student/profile-student.component";
-import { ProfileStudentDetailComponent } from "./student/profile-student-detail.component";
-import { ProfileStudentAcademicComponent } from "./student/profile-student-academic.component";
-import { ProfileStudentExperienceComponent } from "./student/profile-student-experience.component";
-import { ProfileStudentLanguageComponent } from "./student/profile-student-language.component";
-import { ProfileCompanyComponent } from "./company/profile-company.component";
-import { ProfileCompanyDetailComponent } from "./company/profile-company-detail.component";
+import { NgModule } from '@angular/core';
+import { ProfileRoutingModule } from './profile-routing.module';
+import { ProfileComponent } from './profile.component';
+import { SharedModule } from 'src/app/shared/shared.module';
+import { ProfileStudentComponent } from './profile-student/profile-student.component';
+import { ProfileStudyComponent } from './profile-student/study/profile-study.component';
+import { VocationalFormComponent } from './profile-student/study/vocational-form/vocational-form.component';
+import { UniversityDegreeComponent } from './profile-student/study/university-degree-form/university-degree-form.component';
+import { ProfileLanguageComponent } from './profile-student/language/profile-language.component';
+import { ProfileAccountComponent } from './profile-student/account/profile-account.component';
 
 @NgModule({
   declarations: [
     ProfileComponent,
-    ProfileConfigComponent,
     ProfileStudentComponent,
-    ProfileStudentDetailComponent,
-    ProfileStudentAcademicComponent,
-    ProfileStudentExperienceComponent,
-    ProfileStudentLanguageComponent,
-    ProfileCompanyComponent,
-    ProfileCompanyDetailComponent
+    ProfileStudyComponent,
+    VocationalFormComponent,
+    UniversityDegreeComponent,
+    ProfileLanguageComponent,
+    ProfileAccountComponent
   ],
-  imports: [CommonModule, ProfileRoutingModule, ReactiveFormsModule]
+  imports: [SharedModule, ProfileRoutingModule]
 })
 export class ProfileModule {}

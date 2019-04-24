@@ -1,47 +1,34 @@
-import { NgModule } from "@angular/core";
-import { Routes, RouterModule } from "@angular/router";
-import { ProfileComponent } from "./profile.component";
-import { ProfileConfigComponent } from "./profile-config.component";
-import { ProfileStudentComponent } from "./student/profile-student.component";
-import { ProfileCompanyComponent } from "./company/profile-company.component";
-import { ProfileStudentDetailComponent } from "./student/profile-student-detail.component";
-import {ProfileStudentAcademicComponent} from "./student/profile-student-academic.component";
-import {ProfileStudentExperienceComponent} from "./student/profile-student-experience.component";
-import {ProfileStudentLanguageComponent} from "./student/profile-student-language.component";
-import {ProfileCompanyDetailComponent} from "./company/profile-company-detail.component";
+import { NgModule } from '@angular/core';
+import { Routes, RouterModule } from '@angular/router';
+import { ProfileComponent } from './profile.component';
+import { ProfileStudyComponent } from './profile-student/study/profile-study.component';
+import { ProfileLanguageComponent } from './profile-student/language/profile-language.component';
+import { ProfileAccountComponent } from './profile-student/account/profile-account.component';
 
 const routes: Routes = [
   {
-    path: "config",
-    component: ProfileConfigComponent
+    path: '',
+    component: ProfileComponent
   },
   {
-    path: "student/:id",
-    component: ProfileStudentComponent
+    path: 'profile-student/account',
+    component: ProfileAccountComponent
   },
   {
-    path: "student/:id/detail",
-    component: ProfileStudentDetailComponent
+    path: 'profile-student/study',
+    component: ProfileStudyComponent
   },
   {
-    path: "student/:id/academic",
-    component: ProfileStudentAcademicComponent
+    path: 'profile-student/study/:uid',
+    component: ProfileStudyComponent
   },
   {
-    path: "student/:id/experience",
-    component: ProfileStudentExperienceComponent
+    path: 'profile-student/language',
+    component: ProfileLanguageComponent
   },
   {
-    path: "student/:id/languages",
-    component: ProfileStudentLanguageComponent
-  },
-  {
-    path: "company/:id",
-    component: ProfileCompanyComponent
-  },
-  {
-    path: "company/:id/detail",
-    component: ProfileCompanyDetailComponent
+    path: 'profile-student/language/:uid',
+    component: ProfileLanguageComponent
   }
 ];
 
