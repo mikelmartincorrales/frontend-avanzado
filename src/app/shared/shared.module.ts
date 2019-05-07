@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { MaterialModule } from '../material.module';
 /*
 import { TranslateModule } from '@ngx-translate/core';
 import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar'; */
@@ -29,10 +30,10 @@ const exports = [
 const providers = [AppConfirmService];
 
 @NgModule({
-  imports: [CommonModule, FormsModule, ReactiveFormsModule, RouterModule],
+  imports: [CommonModule, FormsModule, ReactiveFormsModule, RouterModule, MaterialModule],
   entryComponents: [AppComfirmComponent],
   providers,
   declarations,
   exports
 })
-export class SharedModule {}
+export class SharedModule { }
