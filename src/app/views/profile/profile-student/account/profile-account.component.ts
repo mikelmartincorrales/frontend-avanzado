@@ -1,37 +1,48 @@
-import { Component, OnInit } from "@angular/core";
-import { FormGroup, FormControl, Validators } from "@angular/forms";
-import { Router } from "@angular/router";
-import { MockData } from "src/app/shared/mock-data";
-import { dateValidator } from "src/app/shared/directives/date-validator.directive";
+import {
+  Component,
+  OnInit,
+  Input,
+  OnChanges,
+  Output,
+  EventEmitter
+} from '@angular/core';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { ProfileService } from '../../../../shared/services/profile.service';
+import { MockData } from 'src/app/shared/mock-data';
+import { dateValidator } from 'src/app/shared/directives/date-validator.directive';
 import {
   User,
   DocumentType,
   Municipe,
   Province
-} from "src/app/shared/models/user.model";
-import { documentNumberValidator } from "src/app/shared/directives/document-number-validator.directive";
-import { Store, select } from "@ngrx/store";
-import { AppState } from "../../../../shared/state/root.state";
-import { selectUser } from "../../../../shared/state/user/selectors/user.selectors";
-import { UpdateUser } from "src/app/shared/state/user/actions/user.actions";
+} from 'src/app/shared/models/user.model';
+import { documentNumberValidator } from 'src/app/shared/directives/document-number-validator.directive';
+import { AppStore } from 'src/app/shared/states/store.interface';
+import { Store } from '@ngrx/store';
+import { getProfile } from 'src/app/shared/states/user';
+import { Observable } from 'rxjs';
 
 @Component({
-  selector: "app-profile-account",
-  templateUrl: "./profile-account.component.html",
-  styleUrls: ["./profile-account.component.scss"]
+  selector: 'app-profile-account',
+  templateUrl: './profile-account.component.html',
+  styleUrls: ['./profile-account.component.scss']
 })
-export class ProfileAccountComponent implements OnInit {
+export class ProfileAccountComponent implements OnInit, OnChanges {
+  @Input() user: User;
+  // tslint:disable-next-line:no-output-on-prefix
+  @Output() onSave: EventEmitter<User> = new EventEmitter<User>();
   rForm: FormGroup;
-  user: User;
   documentsType: DocumentType[];
   municipes: Municipe[];
   provinces: Province[];
 
-  constructor(private router: Router, private _store: Store<AppState>) {
-    this._store.pipe(select(selectUser)).subscribe(u => (this.user = u));
-  }
+  constructor() {}
   ngOnInit() {
     this.loadSelectProperties();
+    this.loadFormInstance();
+  }
+  ngOnChanges() {
     this.loadFormInstance();
   }
   public loadSelectProperties(): void {
@@ -92,10 +103,17 @@ export class ProfileAccountComponent implements OnInit {
   }
 
   public save() {
-    this._store.dispatch(new UpdateUser({ ...this.user, ...this.rForm.value }));
-    this.router.navigate(["/admin/profile"]);
+    const { street = '', municipe = '', province = '', ...rest } = {
+      ...this.rForm.value
+    };
+    const address = {
+      street,
+      municipe,
+      province
+    };
+    const user = { ...this.user, address, ...rest };
+    this.onSave.emit(user);
   }
-
   compareByUID(option1, option2) {
     return option1.uid === (option2 && option2.uid);
   }
