@@ -1,23 +1,10 @@
-
-
-#contenido{
-	padding-top:4em;
+table.mat-table{
+    width: 100%;
 }
-td{
-	padding-left:2em;
-}
-#foto-perfil, #datosPersonales{
-	width:25%;
-
+.mat-icon{
+	color: rgba(0,0,0,.54);
 }
 
-#otra_info{
-	padding-left:3em;
-}
-
-#otra_info  div{
-	padding-left:1em;
-}
-h2{
-	margin-top:2em;
+.table-button{
+	margin-top: 1.5rem;
 }
