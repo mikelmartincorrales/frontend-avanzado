@@ -22,7 +22,8 @@ import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-vocational-form',
-  templateUrl: './vocational-form.component.html'
+  templateUrl: './vocational-form.component.html',
+  styleUrls: ['../profile-study.component.scss']
 })
 export class VocationalFormComponent implements OnInit, OnChanges {
   @Output() onSave: EventEmitter<VocationalStudy> = new EventEmitter();

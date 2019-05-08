@@ -37,7 +37,7 @@ export class ProfileAccountComponent implements OnInit, OnChanges {
   municipes: Municipe[];
   provinces: Province[];
 
-  constructor() {}
+  constructor(private router: Router) { }
   ngOnInit() {
     this.loadSelectProperties();
     this.loadFormInstance();
@@ -113,6 +113,7 @@ export class ProfileAccountComponent implements OnInit, OnChanges {
     };
     const user = { ...this.user, address, ...rest };
     this.onSave.emit(user);
+    this.router.navigate(['/admin/profile']);
   }
   compareByUID(option1, option2) {
     return option1.uid === (option2 && option2.uid);

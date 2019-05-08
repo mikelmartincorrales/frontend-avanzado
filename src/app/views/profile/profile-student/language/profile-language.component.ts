@@ -16,7 +16,7 @@ import {
 } from 'src/app/shared/models/language.model';
 import { dateValidator } from 'src/app/shared/directives/date-validator.directive';
 import { User } from 'src/app/shared/models/user.model';
-import { Router } from "@angular/router"
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-profile-language',
@@ -64,7 +64,7 @@ export class ProfileLanguageComponent implements OnInit, OnChanges {
   }
   public submit() {
     this.saveOrUpdate({ ...this.language, ...this.rForm.value });
-    this.router.navigate(['/admin/profile'])
+    this.router.navigate(['/admin/profile']);
   }
 
   compareLevel(option1, option2) {
