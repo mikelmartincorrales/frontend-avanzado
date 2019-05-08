@@ -2,15 +2,9 @@
   <img src="/assets/img/uoc_logo.png" />
 
   <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-    <!-- TODO: Error de login -->
-
-    <!-- <div *ngIf="errorLogin" class="alert alert-danger">
-          <button type="button" class="close" data-dismiss="alert">
-            &times;
-          </button>
-
-          There is an error in email or password
-        </div> -->
+    <div *ngIf="errorLogin" class="container">
+      <mat-card class="error">Hay un error en el email o la contraseña</mat-card>
+    </div>
 
     <mat-form-field>
       <input matInput type="email" placeholder="Email" formControlName="email" class="form-control" [ngClass]="{
