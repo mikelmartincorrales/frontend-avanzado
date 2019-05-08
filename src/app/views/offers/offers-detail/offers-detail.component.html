@@ -2,10 +2,10 @@
 <div class="container">
   <pre>{{ offer | json }} </pre>
   <button mat-raised-button color="primary" *ngIf="!isSubscribe()" (click)="subscribe()">
-    Inscribirse
+    INSCRIBIRSE
   </button>
 
   <button mat-raised-button color="secondary" *ngIf="isSubscribe()" (click)="unsubscribe()">
-    Eliminar oferta
+    ELIMINAR OFERTA
   </button>
 </div>

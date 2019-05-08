@@ -1,4 +1,4 @@
-<div *ngIf="user">
+<div *ngIf="user.id !== -1">
   <div class="container">
     <mat-card class="example-card">
       <mat-card-header>
@@ -147,6 +147,6 @@
       IDIOMA</button>
   </div>
 </div>
-<div *ngIf="!user" id="contenido">
-  <p>Datos están siendo cargados...</p>
+<div *ngIf="user.id === -1" class="container">
+  <mat-card class="error">No hay elementos</mat-card>
 </div>

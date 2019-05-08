@@ -1,5 +1,5 @@
 <mat-toolbar>Mis ofertas</mat-toolbar>
-<div class="container">
+<div *ngIf="offers.length!==0" class="container">
   <table mat-table [dataSource]="offers" class="mat-elevation-z8">
 
     <ng-container matColumnDef="job-name">
@@ -43,4 +43,7 @@
     <tr mat-header-row *matHeaderRowDef="offersTableColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: offersTableColumns;"></tr>
   </table>
+</div>
+<div *ngIf="offers.length===0" class="container">
+  <mat-card class="error">No hay elementos</mat-card>
 </div>
