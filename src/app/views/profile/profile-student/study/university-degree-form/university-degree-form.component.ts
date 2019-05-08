@@ -10,17 +10,19 @@ import {
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { CollegeStudy } from 'src/app/shared/models/study.model';
 import { dateValidator } from 'src/app/shared/directives/date-validator.directive';
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-university-degree-form',
-  templateUrl: './university-degree-form.component.html'
+  templateUrl: './university-degree-form.component.html',
+  styleUrls: ['../profile-study.component.scss']
 })
 export class UniversityDegreeComponent implements OnInit, OnChanges {
   @Output() onSave: EventEmitter<CollegeStudy> = new EventEmitter();
   @Input() study: CollegeStudy = {} as CollegeStudy;
   public rForm: FormGroup;
 
-  constructor() {}
+  constructor(private router: Router) { }
   ngOnInit() {
     this.loadSelectProperties();
   }
@@ -35,7 +37,7 @@ export class UniversityDegreeComponent implements OnInit, OnChanges {
     return study && study.currentValue;
   }
 
-  public loadSelectProperties(): void {}
+  public loadSelectProperties(): void { }
 
   public loadFormInstance(study: CollegeStudy): void {
     this.rForm = new FormGroup({
@@ -48,6 +50,7 @@ export class UniversityDegreeComponent implements OnInit, OnChanges {
 
   public submit() {
     this.onSave.emit({ ...this.study, ...this.rForm.value });
+    this.router.navigate(['/admin/profile']);
   }
 
   public save() {

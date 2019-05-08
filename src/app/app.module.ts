@@ -7,6 +7,7 @@ import { rootRouterConfig } from './app-routing';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { FakeBackendService } from './shared/inmemory-db/fake-backend.service';
+import { DatePipe } from '@angular/common';
 
 @NgModule({
   imports: [
@@ -16,10 +17,10 @@ import { FakeBackendService } from './shared/inmemory-db/fake-backend.service';
     HttpClientModule,
     HttpClientInMemoryWebApiModule.forRoot(FakeBackendService, {
       dataEncapsulation: false
-    })
+    }),
   ],
   declarations: [AppComponent],
-  providers: [],
+  providers: [DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

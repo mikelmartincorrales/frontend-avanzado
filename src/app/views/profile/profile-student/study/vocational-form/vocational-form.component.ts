@@ -18,6 +18,7 @@ import {
 } from 'src/app/shared/models/study.model';
 import { MockData } from 'src/app/shared/mock-data';
 import { dateValidator } from 'src/app/shared/directives/date-validator.directive';
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-vocational-form',
@@ -32,7 +33,7 @@ export class VocationalFormComponent implements OnInit, OnChanges {
   public grades: Grade[];
   public rForm: FormGroup;
 
-  constructor() {}
+  constructor(private router: Router) { }
   ngOnInit() {
     this.loadSelectProperties();
   }
@@ -69,6 +70,7 @@ export class VocationalFormComponent implements OnInit, OnChanges {
 
   public submit() {
     this.onSave.emit({ ...this.study, ...this.rForm.value });
+    this.router.navigate(['/admin/profile']);
   }
 
   public compareInstitution(
