@@ -7,7 +7,7 @@ import { OffersDetailComponent } from './offers-detail/offers-detail.component';
 import { OffersListComponent } from './offers-list/offers-list.component';
 import { OffersProfileComponent } from './offers-profile/offers-profile.component';
 import { OffersDetailWrapperComponent } from './offers-detail/offers-detail.component-wrapper';
-import { MaterialModule } from '../../material.module';
+import { MaterialModule } from '../../shared/material.module';
 
 @NgModule({
   declarations: [

@@ -6,12 +6,15 @@ import { User } from 'src/app/shared/models/user.model';
 
 @Component({
   selector: 'app-offers-profile',
-  templateUrl: './offers-profile.component.html'
+  templateUrl: './offers-profile.component.html',
+  styleUrls: ['./offers-profile.component.scss']
 })
 export class OffersProfileComponent implements OnChanges {
   @Input() user: User;
   offers: Offer[] = [];
-  constructor() {}
+  offersTableColumns = ['job-name', 'company-name', 'family', 'date', 'province-name', 'municipe-name', 'actions'];
+
+  constructor() { }
   ngOnChanges() {
     this.offers = this.user.offers;
   }

@@ -1,17 +1,38 @@
-<div *ngIf="user" id="contenido">
-  <div class="float-left" id="foto-perfil">
-    <div>
-      <img
-        class="img-fluid img-profile rounded-circle mx-auto mb-2"
-        src="{{ user.avatar_hash }}"
-      />
-    </div>
-    <div class="text-center pr-5">
-      {{ user.name + ' ' + user.surname }}
-    </div>
-  </div>
+<div *ngIf="user" class="container">
 
-  <section id="datosPersonales" class="float-left">
+  <mat-card class="example-card">
+    <mat-card-header>
+      <img mat-card-avatar src="{{ user.avatar_hash }}">
+      <mat-card-title>{{ user.name + ' ' + user.surname }}</mat-card-title>
+      <mat-card-subtitle>{{ user.email }}</mat-card-subtitle>
+    </mat-card-header>
+    <!-- <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu"> -->
+    <mat-card-content>
+      <mat-list>
+        <h3 mat-subheader>Datos Personales</h3>
+        <mat-list-item>
+          <mat-icon mat-list-icon>folder</mat-icon>
+          <p> asd </p>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <h3 mat-subheader>Acerca de mí</h3>
+        <mat-list-item>
+          <p> {{user.aboutMe}} </p>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <h3 mat-subheader>Otras competencias</h3>
+        <mat-list-item>
+          <p> {{ user.otherCompetences}} </p>
+        </mat-list-item>
+      </mat-list>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-button [routerLink]="['/admin/profile/profile-student/account']">MODIFICAR</button>
+    </mat-card-actions>
+  </mat-card>
+
+
+  <section id=" datosPersonales" class="float-left">
     <table>
       <tbody>
         <tr>
@@ -89,21 +110,14 @@
           <td>{{ study.dual ? 'Sí' : 'No' }}</td>
 
           <td>
-            <a
-              [routerLink]="['/admin/profile/profile-student/study', study.uid]"
-              >Editar</a
-            >
+            <a [routerLink]="['/admin/profile/profile-student/study', study.uid]">Editar</a>
             |
-            <a style="cursor:pointer" (click)="deleteStudy(study.uid)"
-              >Borrar</a
-            >
+            <a style="cursor:pointer" (click)="deleteStudy(study.uid)">Borrar</a>
           </td>
         </tr>
       </tbody>
     </table>
-    <a [routerLink]="['/admin/profile/profile-student/study']"
-      >Nueva formación</a
-    >
+    <a [routerLink]="['/admin/profile/profile-student/study']">Nueva formación</a>
   </section>
 
   <h2>Idiomas</h2>
@@ -121,24 +135,17 @@
           <td>{{ language.name.name }}</td>
           <td>{{ language.date }}</td>
           <td>
-            <a
-              [routerLink]="[
+            <a [routerLink]="[
                 '/admin/profile/profile-student/language',
                 language.uid
-              ]"
-              >Editar</a
-            >
+              ]">Editar</a>
             |
-            <a style="cursor:pointer" (click)="deleteLanguage(language.uid)"
-              >Borrar</a
-            >
+            <a style="cursor:pointer" (click)="deleteLanguage(language.uid)">Borrar</a>
           </td>
         </tr>
       </tbody>
     </table>
-    <a [routerLink]="['/admin/profile/profile-student/language']"
-      >Nuevo idioma</a
-    >
+    <a [routerLink]="['/admin/profile/profile-student/language']">Nuevo idioma</a>
   </section>
 </div>
 <div *ngIf="!user" id="contenido">

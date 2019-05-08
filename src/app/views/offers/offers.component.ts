@@ -27,5 +27,5 @@ export class OffersComponent implements OnInit {
     this.offers$ = this.store$.select(getOffers);
   }
 
-  ngOnInit() {}
+  ngOnInit() { }
 }

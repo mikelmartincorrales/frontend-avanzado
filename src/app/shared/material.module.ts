@@ -1,23 +1,32 @@
 import { NgModule } from '@angular/core';
 
-/*
-import { FlexLayoutModule } from '@angular/flex-layout';
- import {
-  MatSidenavModule,
-  MatListModule,
-  MatTooltipModule,
-  MatOptionModule,
-  MatSelectModule,
-  MatMenuModule,
-  MatSnackBarModule,
-  MatGridListModule,
-  MatToolbarModule,
-  MatIconModule,
-  MatButtonModule,
-  MatRadioModule,
-  MatCheckboxModule,
-  MatCardModule,
-  MatProgressSpinnerModule,
-  MatRippleModule,
-  MatDialogModule
-} from '@angular/material'; */
+import {
+  MatButtonModule, MatFormFieldModule, MatInputModule, MatCardModule, MatToolbarModule, MatTableModule, MatIconModule, MatSidenavModule, MatListModule
+} from '@angular/material';
+
+@NgModule({
+  imports: [
+    MatButtonModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatCardModule,
+    MatToolbarModule,
+    MatTableModule,
+    MatIconModule,
+    MatSidenavModule,
+    MatListModule
+  ],
+  exports: [
+    MatButtonModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatCardModule,
+    MatToolbarModule,
+    MatTableModule,
+    MatIconModule,
+    MatSidenavModule,
+    MatListModule
+  ]
+})
+
+export class MaterialModule { }
