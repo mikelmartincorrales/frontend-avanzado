@@ -12,7 +12,7 @@ describe('AppComponent', () => {
     // it('should be created', inject([MessageService], (service: MessageService) => {
     //     expect(service).toBeTruthy();
     // }));
-    it('test básico', () => {
+    it('test base', () => {
         expect(true).toBe(true);
     })
 });
