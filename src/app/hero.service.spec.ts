@@ -5,12 +5,6 @@ import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Hero } from './hero';
 import { HeroService } from './hero.service';
 
-const mockData = [
-    { id: 1, name: 'Hulk' },
-    { id: 2, name: 'Thor' },
-    { id: 3, name: 'Iron Man' }
-] as Hero[];
-
 describe('HeroesService', () => {
     let httpClient: HttpClient;
     let httpTestingController: HttpTestingController;
@@ -177,10 +171,3 @@ describe('HeroesService', () => {
     });
 
 });
-
-
-/*
-Copyright Google LLC. All Rights Reserved.
-Use of this source code is governed by an MIT-style license that
-can be found in the LICENSE file at http://angular.io/license
-*/

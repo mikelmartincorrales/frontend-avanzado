@@ -34,7 +34,7 @@ describe('HeroesComponent', () => {
     it('button should invoke add()', async(() => {
         spyOn(component, 'add');
 
-        let button = fixture.debugElement.nativeElement.querySelector('button');
+        let button = fixture.debugElement.nativeElement.querySelector('div > button');
         button.click();
 
         fixture.whenStable().then(() => {
