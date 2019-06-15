@@ -44,7 +44,6 @@ export class FakeBackendService implements InMemoryDbService {
               name: 'Ciclo Formativo de Grado Superior'
             },
             date: '30/06/2005',
-            // date: '2005-06-30T22:00:00.000Z',
             dual: false,
             bilingue: true,
             certificate: true
@@ -63,7 +62,6 @@ export class FakeBackendService implements InMemoryDbService {
             },
             grade: { uid: 3, name: 'Ciclo Formativo de Grado Superior' },
             date: '30/06/2007',
-            // date: '2007-06-30T22:00:00.000Z',
             dual: true,
             bilingue: false,
             certificate: false
@@ -76,14 +74,12 @@ export class FakeBackendService implements InMemoryDbService {
             level: { uid: 5, name: 'C1' },
             name: { uid: 1, name: 'Inglés' },
             date: '30/06/2005'
-            // date: '2005-06-30T22:00:00.000Z'
           },
           {
             uid: 2,
             level: { uid: 4, name: 'B2' },
             name: { uid: 2, name: 'Francés' },
             date: '30/06/1998'
-            // date: '1998-06-30T22:00:00.000Z'
           }
         ],
         offers: []
@@ -135,7 +131,6 @@ export class FakeBackendService implements InMemoryDbService {
         province: { uid: 1, name: 'Málaga' },
         municipe: { uid: 7, name: 'Estepona' },
         date: '21/09/2006',
-        // date: '2006-09-21T22:00:00.000Z',
         category: { uid: 2, name: 'Informática y Comunicaciones' },
         title: [
           { uid: 1, name: 'Desarrollo Aplicaciones Web' },
@@ -156,7 +151,6 @@ export class FakeBackendService implements InMemoryDbService {
         province: { uid: 1, name: 'Málaga' },
         municipe: { uid: 8, name: 'Campanillas (PTA)' },
         date: '21/09/2016',
-        // date: '2016-09-21T22:00:00.000Z',
         category: { uid: 4, name: 'Comercio y Marketing' },
         title: [{ uid: 5, name: 'Gestión Comercial y Empresarial' }]
       },
@@ -174,7 +168,6 @@ export class FakeBackendService implements InMemoryDbService {
         province: { uid: 5, name: 'Granada' },
         municipe: { uid: 9, name: 'Motril' },
         date: '11/07/2016',
-        // date: '2016-07-11T22:00:00.000Z',
         category: { uid: 2, name: 'Informática y Comunicaciones' },
         title: [{ uid: 4, name: 'Desarrollo Aplicaciones Multiplataforma' }]
       },
@@ -191,7 +184,6 @@ export class FakeBackendService implements InMemoryDbService {
         province: { uid: 2, name: 'Sevilla' },
         municipe: { uid: 10, name: 'Osuna' },
         date: '01/12/2015',
-        // date: '2012-12-01T22:00:00.000Z',
         category: { uid: 5, name: 'Administración y Gestión' },
         title: [{ uid: 6, name: 'Empresariales' }]
       }

@@ -1,12 +1,48 @@
-mat-card {
-  max-width: 600px;
-  margin: 2rem auto 0 auto;
+form input.ng-invalid.ng-touched {
+  border-color: #FA787E;
 }
 
-mat-form-field, input {
+.card{
+  /*display: flex;
+  flex-direction: column;*/
+  padding: 20px;
+  position: relative;
+  margin-top: 40px;
+  width:70%;
+  margin-left: 15%;
+  margin-right: 20%;
+}
+/*
+.boton-form{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+*/
+.card-content{
   width: 100%;
-  margin-bottom: .6rem;
 }
-mat-form-field{
-  margin-bottom: .5rem;
+.card-form{
+  width: 100%;
 }
+.card-header{
+  position: relative;
+  overflow: hidden;
+  top: -40px;
+  width: 70px;
+  padding: 25px;
+  border-radius: 3px;
+  background: linear-gradient(60deg, #ec407a, #d81b60);
+  box-shadow: 0 4px 20px 0px rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgba(233, 30, 99, 0.4);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.card-header i {
+  font-size: 24px;
+  width: 33px;
+  height: 33px;
+  line-height: 33px;
+  color: #fff;
+  
+  }

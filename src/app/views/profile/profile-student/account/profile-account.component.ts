@@ -9,18 +9,18 @@ import {
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ProfileService } from '../../../../shared/services/profile.service';
-import { MockData } from 'src/app/shared/mock-data';
-import { dateValidator } from 'src/app/shared/directives/date-validator.directive';
+import { MockData } from '../../../../shared/mock-data';
+import { dateValidator } from '../../../../shared/directives/date-validator.directive';
 import {
   User,
   DocumentType,
   Municipe,
   Province
-} from 'src/app/shared/models/user.model';
-import { documentNumberValidator } from 'src/app/shared/directives/document-number-validator.directive';
-import { AppStore } from 'src/app/shared/states/store.interface';
+} from '../../../../shared/models/user.model';
+import { documentNumberValidator } from '../../../../shared/directives/document-number-validator.directive';
+import { AppStore } from '../../../../shared/states/store.interface';
 import { Store } from '@ngrx/store';
-import { getProfile } from 'src/app/shared/states/user';
+import { getProfile } from '../../../../shared/states/user';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -37,7 +37,7 @@ export class ProfileAccountComponent implements OnInit, OnChanges {
   municipes: Municipe[];
   provinces: Province[];
 
-  constructor(private router: Router) { }
+  constructor() {}
   ngOnInit() {
     this.loadSelectProperties();
     this.loadFormInstance();
@@ -113,7 +113,6 @@ export class ProfileAccountComponent implements OnInit, OnChanges {
     };
     const user = { ...this.user, address, ...rest };
     this.onSave.emit(user);
-    this.router.navigate(['/admin/profile']);
   }
   compareByUID(option1, option2) {
     return option1.uid === (option2 && option2.uid);

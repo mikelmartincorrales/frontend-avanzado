@@ -1,5 +1,7 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { User } from 'src/app/shared/models/user.model';
+import { User } from '../../../shared/models/user.model';
+
+
 
 @Component({
   selector: 'app-profile-student',
@@ -12,11 +14,34 @@ export class ProfileStudentComponent {
   @Output() onDeleteStudy: EventEmitter<User> = new EventEmitter();
   // tslint:disable-next-line: no-output-on-prefix
   @Output() onDeleteLanguage: EventEmitter<User> = new EventEmitter();
+  
+  columnsToDisplay = [];
+  columnsToDisplayId = [];
+  columnsToDisplayUser =[];
 
-  studyTableColumns = ['level', 'grade', 'title', 'institution', 'date', 'certificate', 'bilingue', 'dual', 'actions'];
-  languageTableColumns = ['level', 'language', 'date', 'actions'];
+  constructor() {
+    this.columnsToDisplay = [
+    'tipo', 
+    'nivel',
+    'titulo',
+    'centro',
+    'fecha',
+    'certificado',
+    'bilingue',
+    'dual',
+    'accion'
+  ];
 
-  constructor() { }
+  this.columnsToDisplayId = [ 
+  'nivel',
+  'idioma',
+  'fecha',
+  'accion'
+];
+this.columnsToDisplayUser = [ 
+  'email'
+];
+}
 
   deleteStudy(studyID: number) {
     const studies = [...this.user.studies];

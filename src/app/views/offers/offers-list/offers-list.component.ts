@@ -5,24 +5,21 @@ import {
   OnChanges,
   SimpleChanges
 } from '@angular/core';
-import { OffersService } from 'src/app/shared/services/offers.service';
-import { Offer } from 'src/app/shared/models/offer.model';
-import { ProfileService } from 'src/app/shared/services/profile.service';
-import { User } from 'src/app/shared/models/user.model';
+import { OffersService } from '../../../shared/services/offers.service';
+import { Offer } from '../../../shared/models/offer.model';
+import { ProfileService } from '../../../shared/services/profile.service';
+import { User } from '../../../shared/models/user.model';
 
 @Component({
   selector: 'app-offers-list',
-  templateUrl: './offers-list.component.html',
-  styleUrls: ['./offers-list.component.scss']
+  templateUrl: './offers-list.component.html'
 })
 export class OffersListComponent implements OnChanges {
   @Input() user: User;
   @Input() offers: Offer[];
   offersStudy: Offer[] = [];
-  offersStudyTableColumns = ['job-name', 'company-name', 'family', 'date', 'province-name', 'municipe-name', 'subscribe', 'actions'];
   offersOther: Offer[] = [];
-  offersOtherTableColumns = ['job-name', 'company-name', 'family', 'date', 'province-name', 'municipe-name'];
-  constructor() { }
+  constructor() {}
   ngOnChanges(changes: SimpleChanges) {
     if (changes.user && changes.offers) {
       this.selectOffers();

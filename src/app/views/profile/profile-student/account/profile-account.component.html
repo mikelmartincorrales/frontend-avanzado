@@ -1,84 +1,182 @@
-<mat-toolbar>Editar Perfil</mat-toolbar>
 <div class="container">
-  <mat-card>
-    <form [formGroup]="rForm" (submit)="save()">
+  <!--<app-navbar title="User Profile"></app-navbar>-->
+  <div class="row" style="margin-top: 30px">
+    
+      <div class="card" fxLayout="column" fxLayoutAlign="center" >
+        <div class="card-header">
+          <i class="material-icons">perm_identity</i>
+        </div>
+      <div class="card-content" >
+          <h4 class="card-title">Datos Personales-
+            <small class="category">Completa tus datos</small>
+          </h4>
+          <form [formGroup]="rForm" (submit)="save()">
+            
+            <div class="card-form" >
+              
+                <div class="form-group">
+              <!--<div class="form-row">-->
+                <mat-form-field color="accent">
+                  <mat-label> Nombre </mat-label> 
+                  <input matInput type="text"  
+                  name="name" 
+                  formControlName="name" 
+                  />
+                </mat-form-field>
+               </div> 
+                <mat-form-field color="accent">
+                  <mat-label> Surname </mat-label> 
+                  <input matInput
+                  type="text"
+                  name="surname"
+                  formControlName="surname"
+                  placeholder="Surname"
+                />
+                </mat-form-field>
+                <mat-form-field color="accent">
+                  <mat-label> Birthdate </mat-label> 
+                  <input matInput
+                  type="text"
+                  name="birthdate"
+                  formControlName="birthdate"
+                  placeholder="Birthdate"
+                  />
+                </mat-form-field>
+                <mat-form-field color="accent">
+                  <mat-label> Phone </mat-label> 
+                  <input matInput
+                  type="text"
+                  name="phone"
+                  formControlName="phone"
+                  placeholder="Phone"
+                />
+                </mat-form-field>
+                <mat-form-field color="accent">
+                  <mat-label> Phone2 </mat-label> 
+                  <input matInput
+                  type="text"
+                  name="phone2"
+                  formControlName="phone2"
+                />
+                </mat-form-field>
+                <div class="form-group">
+                  <mat-form-field>
+                    <mat-label>Tipo de documento </mat-label> 
+                    <mat-select
+                      [compareWith]="compareByUID"
+                      name="documentType"
+                      formControlName="documentType"
+                    >
+                      <mat-option 
+                        [value]="documentType"
+                        *ngFor="let documentType of documentsType"
+                      >
+                        {{ documentType.name }}</mat-option
+                      >
+                    </mat-select>                     
+                  </mat-form-field>  
+                </div>  
+                
+                <mat-form-field color="accent">
+                  <mat-label>Document Number</mat-label>
+                  <textarea matInput
+                    type="text"
+                    name="documentNumber"
+                    formControlName="documentNumber"
+                    placeholder="Document Number"
+                  > </textarea>
+                </mat-form-field>
 
-      <mat-form-field>
-        <input matInput placeholder="Nombre" formControlName="name">
-      </mat-form-field>
+                <mat-form-field color="accent">
+                  <mat-label>Street</mat-label>
+                  <input matInput
+                    type="text"
+                    name="street"
+                    formControlName="street"
+                    placeholder="Street"
+                  />
+                </mat-form-field>
 
-      <mat-form-field>
-        <input matInput placeholder="Apellidos" formControlName="surname">
-      </mat-form-field>
+                <div class="form-group">
+                  <mat-form-field>
+                    <mat-label>Provincia </mat-label> 
+                    <mat-select
+                      [compareWith]="compareByUID"
+                      name="province"
+                      formControlName="province"
+                      > 
+                      <mat-option [value]="province" *ngFor="let province of provinces">
+                        {{ province.name }}
+                      </mat-option>
+                      
+                    </mat-select>
+                  </mat-form-field>  
+                </div>
 
-      <mat-form-field>
-        <input matInput placeholder="Fecha de nacimiento" formControlName="birthdate">
-        <mat-error>
-          El formato debe ser DD/MM/AAAA
-        </mat-error>
-      </mat-form-field>
+                <div class="form-group">
+                  <mat-form-field>
+                    <mat-label for="level">Municipio</mat-label>
+                    <mat-select
+                      [compareWith]="compareByUID"
+                      name="municipe"
+                      formControlName="municipe"
+                    >
+                      <mat-option [value]="municipe" *ngFor="let municipe of municipes">
+                        {{ municipe.name }}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
 
-      <mat-form-field>
-        <input matInput placeholder="Teléfono 1" formControlName="phone">
-      </mat-form-field>
+               
+                <mat-form-field color="accent">
+                  <mat-label class="textarea-label">Acerca de mi</mat-label>
+                  <textarea matInput
+                  name="aboutMe"
+                  formControlName="aboutMe"
+                ></textarea>
+                </mat-form-field>
 
-      <mat-form-field>
-        <input matInput placeholder="Teléfono 2" formControlName="phone2">
-      </mat-form-field>
+                <mat-form-field color="accent">
+                  <mat-label class="textarea-label">Otras competencias</mat-label>
+                  <textarea matInput
+                    name="otherCompetences"
+                    formControlName="otherCompetences"
+                  ></textarea>
+                </mat-form-field>
 
-
-      <mat-form-field>
-        <mat-label>Tipo de documento</mat-label>
-        <mat-select [compareWith]="compareByUID" name="documentType" formControlName="documentType">
-          <mat-option *ngFor="let documentType of documentsType" [value]="documentType">
-            {{ documentType.name }}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
-
-
-      <mat-form-field>
-        <input matInput placeholder="Número de documento" formControlName="documentNumber">
-      </mat-form-field>
-
-      <mat-form-field>
-        <input matInput placeholder="Calle" formControlName="street">
-      </mat-form-field>
-
-      <mat-form-field>
-        <mat-label>Provincia</mat-label>
-        <mat-select [compareWith]="compareByUID" name="province" formControlName="province">
-          <mat-option *ngFor="let province of provinces" [value]="province">
-            {{ province.name }}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
-
-      <mat-form-field>
-        <mat-label>Municipio</mat-label>
-        <mat-select [compareWith]="compareByUID" name="municipe" formControlName="municipe">
-          <mat-option *ngFor="let municipe of municipes" [value]="municipe">
-            {{ municipe.name }}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
-
-      <mat-form-field>
-        <textarea matInput placeholder="Acerca de mi" formControlName="aboutMe" name="aboutMe"></textarea>
-      </mat-form-field>
-
-      <mat-form-field>
-        <textarea matInput placeholder="Otras competencias" formControlName="otherCompetences"
-          name="otherCompetences"></textarea>
-      </mat-form-field>
-
-      <mat-form-field>
-        <textarea matInput placeholder="Licencias" formControlName="license" name="license"></textarea>
-      </mat-form-field>
-
-      <button mat-raised-button color="primary" type="submit" [disabled]="rForm.invalid">
-        GUARDAR
-      </button>
-    </form>
-  </mat-card>
+                <mat-form-field color="accent">
+                  <mat-label class="textarea-label">Licencias</mat-label>
+                  <textarea matInput
+                    name="license"
+                    formControlName="license"
+                    placeholder="License"
+                ></textarea>
+                </mat-form-field>
+                
+              </div>
+              <div class="boton-form">
+                <button mat-raised-button class="btn btn-rose btn-round" type="submit" [disabled]="rForm.invalid">
+                  Guardar
+                </button> 
+              </div>  
+            
+          </form>
+        </div>
+      </div>
+    <!--
+    <div class="col-md-4">
+      <div class="card right-profile">
+        <div class="profile">
+          <img src="../../../assets/img/marc.jpg" alt="profile"/>
+        </div>
+        <h6>CEO / CO-FOUNDER</h6>
+        <h4>{{ firstName }} {{ lastName }}</h4>
+        <p>Don't be scared of the truth because we need to restart the human foundation in truth And I love you like
+          Kanye loves Kanye I love Rick Owens’ bed design but the back is...</p>
+        <button mat-raised-button class="btn btn-rose btn-round">CHANGE</button>
+      </div>
+    </div>
+    -->
+  </div>
 </div>

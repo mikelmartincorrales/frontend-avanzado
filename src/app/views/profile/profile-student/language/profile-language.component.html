@@ -1,35 +1,63 @@
-<mat-toolbar>Idioma</mat-toolbar>
-<div class="container">
-  <mat-card>
-    <form [formGroup]="rForm" (submit)="submit()">
-      <mat-form-field>
-        <mat-label>Nivel</mat-label>
-        <mat-select [compareWith]="compareLevel" name="level" formControlName="level">
-          <mat-option *ngFor="let level of languageLevels" [value]="level">
-            {{ level.name }}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
 
-      <mat-form-field>
-        <mat-label>Idioma</mat-label>
-        <mat-select [compareWith]="compareLevel" name="name" formControlName="name">
-          <mat-option *ngFor="let name of languageNames" [value]="name">
-            {{ name.name }}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
+<div class="card"  fxLayout="row" fxLayoutAlign="space-between center"  >
 
-      <mat-form-field>
-        <input matInput placeholder="Fecha de obtención del título" formControlName="date">
-        <mat-error>
-          El formato debe ser DD/MM/AAAA
-        </mat-error>
-      </mat-form-field>
+  <div class="card-content" >
+      <div class="card-header">
+          <i class="material-icons">language</i>
+      </div>
+      <h4 class="card-title">Lenguaje-
+          <small class="category">Idioma</small>
+      </h4><br>
+    <form [formGroup]="rForm" (submit)="submit()" class="card-form">
 
-      <button mat-raised-button color="primary" type="submit" [disabled]="rForm.invalid">
-        GUARDAR
-      </button>
+      <div  class="card-content-form"  fxLayout="row" fxLayoutAlign="space-around none"  >
+        <div class="form-group">
+          <mat-form-field color="accent">
+            <mat-label for="level">Nivel</mat-label>
+            <mat-select
+              [compareWith]="compareLevel"
+              name="level"
+              formControlName="level"
+            >
+              <mat-option [value]="level" *ngFor="let level of languageLevels">
+                {{ level.name }}  
+              </mat-option>
+            </mat-select>
+          </mat-form-field>  
+        </div>
+
+        <div class="form-group">
+          <mat-form-field color="accent">
+            <mat-label for="name">Idioma</mat-label>
+            <mat-select
+              name="name"
+              formControlName="name"
+              [compareWith]="compareName"
+            >
+              <mat-option [value]="name" *ngFor="let name of languageNames">
+                {{ name.name }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+        <div class="form-group">
+          <mat-form-field color="accent">
+            <mat-label for="date">Fecha de obtención del título</mat-label>
+            <input matInput
+              type="text"
+              name="date"
+              formControlName="date"
+            />
+          </mat-form-field>  
+        </div>
+        
+      </div>    
+      <div class="boton-form"   fxLayout="column" fxLayoutAlign="space-between center">
+          <button button mat-raised-button class="btn btn-rose btn-round"  type="submit" [disabled]="rForm.invalid">
+              Guardar
+          </button>
+      </div>   
     </form>
-  </mat-card>
-</div>
+  </div>
+</div>  

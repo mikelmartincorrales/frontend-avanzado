@@ -7,7 +7,6 @@ import { OffersDetailComponent } from './offers-detail/offers-detail.component';
 import { OffersListComponent } from './offers-list/offers-list.component';
 import { OffersProfileComponent } from './offers-profile/offers-profile.component';
 import { OffersDetailWrapperComponent } from './offers-detail/offers-detail.component-wrapper';
-import { MaterialModule } from '../../shared/material.module';
 
 @NgModule({
   declarations: [
@@ -17,6 +16,6 @@ import { MaterialModule } from '../../shared/material.module';
     OffersDetailComponent,
     OffersDetailWrapperComponent
   ],
-  imports: [CommonModule, OffersRoutingModule, MaterialModule]
+  imports: [CommonModule, OffersRoutingModule]
 })
-export class OffersModule { }
+export class OffersModule {}

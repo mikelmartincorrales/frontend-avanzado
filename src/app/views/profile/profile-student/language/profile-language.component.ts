@@ -8,15 +8,14 @@ import {
   SimpleChanges
 } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { MockData } from 'src/app/shared/mock-data';
+import { MockData } from '../../../../shared/mock-data';
 import {
   Language,
   LanguageLevel,
   LanguageName
-} from 'src/app/shared/models/language.model';
-import { dateValidator } from 'src/app/shared/directives/date-validator.directive';
-import { User } from 'src/app/shared/models/user.model';
-import { Router } from "@angular/router";
+} from '../../../../shared/models/language.model';
+import { dateValidator } from '../../../../shared/directives/date-validator.directive';
+import { User } from '../../../../shared/models/user.model';
 
 @Component({
   selector: 'app-profile-language',
@@ -33,7 +32,7 @@ export class ProfileLanguageComponent implements OnInit, OnChanges {
   languageLevels: LanguageLevel[];
   languageNames: LanguageName[];
 
-  constructor(private router: Router) { }
+  constructor() {}
   ngOnInit() {
     this.loadSelectProperties();
   }
@@ -64,7 +63,6 @@ export class ProfileLanguageComponent implements OnInit, OnChanges {
   }
   public submit() {
     this.saveOrUpdate({ ...this.language, ...this.rForm.value });
-    this.router.navigate(['/admin/profile']);
   }
 
   compareLevel(option1, option2) {

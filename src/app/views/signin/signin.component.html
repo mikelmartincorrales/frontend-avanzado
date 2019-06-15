@@ -1,34 +1,61 @@
+<div class="background"></div>
 <div class="container">
-  <mat-card>
-    <img src="/assets/img/uoc_logo.png" />
+  <div class="container">
+    <app-header> </app-header>
 
-    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-      <div *ngIf="errorLogin" class="container">
-        <mat-card class="error">Hay un error en el email o la contraseña</mat-card>
+    <div class="card" fxLayoutAlign="center">
+      <div class="card-header">
+        <h4>Login</h4>
+        <div class="social-btns">
+          <button mat-icon-button><i class="fa fa-facebook-square"></i></button>
+          <button mat-icon-button><i class="fa fa-twitter"></i></button>
+          <button mat-icon-button><i class="fa fa-google-plus"></i></button>
+        </div>
       </div>
+      <p class="tip">Credenciales</p>
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <div class="card-form">
+          <!--<div class="form-row">-->
+          <i class="material-icons">email</i>
+          <mat-form-field color="accent">
+            <mat-label>Email </mat-label>
+            <mat-error *ngIf="loginForm.get('email').hasError('required')">
+              email requerido
+            </mat-error>
+            <mat-error>
+              Introduzca un email correcto
+            </mat-error>
 
-      <mat-form-field>
-        <input matInput type="email" placeholder="Email" formControlName="email" class="form-control" [ngClass]="{
-                  'is-invalid': submitted && loginForm.controls.email.errors
-                }" />
-        <mat-error>
-          Please enter a valid email address
-        </mat-error>
-      </mat-form-field>
-
-      <mat-form-field>
-        <input matInput type="password" placeholder="Password" formControlName="password" class="form-control"
-          [ngClass]="{
-              'is-invalid': submitted && loginForm.controls.password.errors
-            }" />
-      </mat-form-field>
-
-      <div class="form-group">
-        <button mat-raised-button color="primary" [disabled]="loginForm.invalid">
-          LOGIN
+            <input matInput type="text" id="email" formControlName="email" />
+          </mat-form-field>
+          <!--</div>-->
+          <!--<div class="form-row">-->
+          <i class="material-icons">lock_outline</i>
+          <mat-form-field color="accent">
+            <input
+              matInput
+              type="password"
+              id="password"
+              formControlName="password"
+            />
+            <mat-error *ngIf="loginForm.get('password').hasError('minlength')">
+              Longitud minima 8 caracteres.
+            </mat-error>
+          </mat-form-field>
+          <!--</div>-->
+        </div>
+        <button class="card-footer">
+          <mat-icon>account_box</mat-icon>
+          Login
         </button>
-        <button mat-button routerLink="/forgot-password">REMEMBER PASSWORD</button>
-      </div>
-    </form>
-  </mat-card>
+        <a routerLink="/forgot-password">Remember password</a>
+      </form>
+
+      <!--
+         <div class="card-footer">
+           <button mat-button (click)="loginBtn()">LET'S GO</button>
+         </div>
+         -->
+    </div>
+  </div>
 </div>

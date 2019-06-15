@@ -1,8 +1,13 @@
+import * as AuthActions from '../../shared/states/auth/actions/auth.actions';
+
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, Validators, FormControl } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+
+import { AppStore } from '../../shared/states/store.interface';
+import { MatIconModule } from '@angular/material/icon';
 import { Store } from '@ngrx/store';
-import { AppStore } from 'src/app/shared/states/store.interface';
-import * as AuthActions from 'src/app/shared/states/auth/actions/auth.actions';
+//import {MatFormFieldModule} from '@angular/material/form-field';
+//import {MatInputModule} from '@angular/material/input';
 
 @Component({
   selector: 'app-signin',
@@ -13,18 +18,22 @@ export class SigninComponent implements OnInit {
   loginForm: FormGroup;
   submitted = false;
   errorLogin = false;
-  constructor(private store$: Store<AppStore>) { }
+  constructor(private store$: Store<AppStore>) {}
 
   ngOnInit() {
     this.loginForm = new FormGroup({
-      email: new FormControl('carlos.caballero@gmail.com', [Validators.email, Validators.required]),
-      password: new FormControl('1234', Validators.required),
-      rememberMe: new FormControl(false),
+      email: new FormControl('', [Validators.email, Validators.required]),
+      password: new FormControl('', [
+        Validators.required /* , Validators.minLength(8) */
+      ]),
+      rememberMe: new FormControl(false)
     });
   }
 
   onSubmit() {
     this.submitted = true;
-    this.store$.dispatch(new AuthActions.Identification({ ...this.loginForm.value }));
+    this.store$.dispatch(
+      new AuthActions.Identification({ ...this.loginForm.value })
+    );
   }
 }

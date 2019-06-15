@@ -1,11 +1,12 @@
-<mat-toolbar>{{ offer ? offer.job.name: 'Detalle de Oferta' }}</mat-toolbar>
-<div class="container">
-  <pre>{{ offer | json }} </pre>
-  <button mat-raised-button color="primary" *ngIf="!isSubscribe()" (click)="subscribe()">
-    INSCRIBIRSE
-  </button>
+<h2>
+  Offers Detail
+</h2>
 
-  <button mat-raised-button color="secondary" *ngIf="isSubscribe()" (click)="unsubscribe()">
-    ELIMINAR OFERTA
-  </button>
-</div>
+<pre>{{ offer | json }} </pre>
+
+<button *ngIf="!isSubscribe()" class="btn btn-primary" (click)="subscribe()">
+  Inscribirse
+</button>
+<button *ngIf="isSubscribe()" class="btn btn-danger" (click)="unsubscribe()">
+  Eliminar oferta
+</button>

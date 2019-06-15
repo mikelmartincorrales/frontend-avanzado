@@ -10,3 +10,4 @@ export interface AppStore {
   auth: AuthState;
   user: UserState;
 }
+ 

@@ -1,26 +1,113 @@
-<div class="main-container" [class.example-is-mobile]="mobileQuery.matches">
-  <mat-toolbar color="primary" class="toolbar">
-    <button mat-icon-button (click)="snav.toggle()">
-      <mat-icon>menu</mat-icon>
-    </button>
-    <h1 class="app-name">UOC Job</h1>
+<!-- <div class="app-admin-wrap" [dir]="layoutConf.dir"> -->
+<!-- Header for top navigation layout -->
+<!-- ONLY REQUIRED FOR **TOP** NAVIGATION LAYOUT -->
+<!--   <app-header-top
+    *ngIf="layoutConf.navigationPos === 'top'"
+    [notificPanel]="notificationPanel"
+  >
+  </app-header-top> -->
+
+  <!--
+<div class="row">
+  <div class="col-3">
+    <ul>
+      <li><a routerLink="/">Logout</a></li>
+      <li><a routerLink="/admin/">Dashboard</a></li>
+
+      <li><a routerLink="/admin/profile">Profile</a></li>
+      <li><a routerLink="/admin/offers">Offers</a></li>
+      <li>
+        <a routerLink="/admin/config">Configuración</a>
+      </li>
+      <li>
+        <a [routerLink]="['/admin/offers/my-offers']">Mis ofertas</a>
+      </li>
+    </ul>
+  </div>
+  <div class="col-9">
+    <router-outlet></router-outlet>
+  </div>
+</div>
+--> 
+<!-- </div> -->
+
+
+
+<!-- <div class="logo text-uppercase" [style.color]="normalFontColor">-->
+<div class="logo text-uppercase">
+  <img src="../../assets/img/angular2-logo.png" class="logo-img" alt="logo"/>
+
+  <!--<a mat-raised-button class="btn btn-rose btn-round" [routerLink]="['/admin/profile/profile-student/study']"-->
+      <span><a  mat-button  routerLink="/admin/">Dashboard </a></span>
+      <span><a  mat-button routerLink="/admin/profile">Profile </a></span>
+      <span><a  mat-button routerLink="/admin/offers">Offers </a></span>
+      <span> <a  mat-button routerLink="/admin/config">Configuración </a></span>
+      <span><a  mat-button [routerLink]="['/admin/offers/my-offers']">Mis ofertas </a></span>
+      <span><a mat-button  routerLink="/"> Logout </a> </span>
+
+</div>
+
+<!--
+<div class="divider" [style.background-color]="dividerBgColor"></div>
+ <div class="sidebar-wrapper">
+  <div class="nav-container">
+
+-->
+
+
+
+<!--
+
+<mat-toolbar color="accent" fxLayout="row" fxLayoutAlign="space-around start">
+  <div>
+    <mat-toolbar-row>
+      <span><a routerLink="/">Logout </a> </span>
+    </mat-toolbar-row>
+  </div>
+  <div>
+    <mat-toolbar-row>
+      <span><a routerLink="/admin/">Dashboard </a></span>
+      <span class="example-spacer"></span>
+      <mat-icon class="example-icon" aria-hidden="false" aria-label="Example user verified icon">verified_user</mat-icon>
+    </mat-toolbar-row>
+  </div>
+    <mat-toolbar-row>
+      <span><a routerLink="/admin/profile">Profile </a></span>
+      <span class="example-spacer"></span>
+      <mat-icon class="example-icon" aria-hidden="false" aria-label="Example heart icon">favorite</mat-icon>
+    </mat-toolbar-row>
+
+    <mat-toolbar-row>
+      <span><a routerLink="/admin/offers">Offers </a></span>
+      <span class="example-spacer"></span>
+      <mat-icon class="example-icon" aria-hidden="false" aria-label="Example heart icon">favorite</mat-icon>
+    </mat-toolbar-row>
+
+    <mat-toolbar-row>
+      <span> <a routerLink="/admin/config">Configuración </a></span>
+      <span class="example-spacer"></span>
+      <mat-icon class="example-icon" aria-hidden="false" aria-label="Example heart icon">favorite</mat-icon>
+    </mat-toolbar-row>
+
+    <mat-toolbar-row>
+      <span><a [routerLink]="['/admin/offers/my-offers']">Mis ofertas </a></span>
+      <span class="example-spacer"></span>
+      <mat-icon class="example-icon" aria-hidden="false" aria-label="Example heart icon">favorite</mat-icon>
+    </mat-toolbar-row>
+
   </mat-toolbar>
 
-  <mat-sidenav-container class="sidenav-container">
-    <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'" [fixedInViewport]="mobileQuery.matches"
-      fixedTopGap="56">
-      <mat-nav-list>
-        <a mat-list-item routerLink="/admin">Dashboard</a>
-        <a mat-list-item routerLink="/admin/profile">Perfil</a>
-        <a mat-list-item routerLink="/admin/offers">Ofertas</a>
-        <a mat-list-item routerLink="/admin/config">Configuración</a>
-        <a mat-list-item routerLink="/admin/offers/my-offers">Mis Ofertas</a>
-        <a mat-list-item routerLink="/">Logout</a>
-      </mat-nav-list>
-    </mat-sidenav>
 
-    <mat-sidenav-content>
-      <router-outlet></router-outlet>
-    </mat-sidenav-content>
-  </mat-sidenav-container>
+
+-->
+
+
+
+<!--
 </div>
+</div>
+-->
+  <div class="col-9">
+    <router-outlet></router-outlet>
+  </div>
+
