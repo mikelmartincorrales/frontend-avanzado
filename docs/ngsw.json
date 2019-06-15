@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1560615891021,
+  "timestamp": 1560620063656,
   "index": "C:/Program Files/Git/UOCJob/dev/pwa/index.html",
   "assetGroups": [
     {
@@ -93,7 +93,7 @@
     "C:/Program Files/Git/UOCJob/assets/img/uoc_logo.png": "a8268228316a687fc11a0ecbedb2507aedcccf39",
     "C:/Program Files/Git/UOCJob/common.f8327c41b5903a463907.js": "58de5be37fd24ae72182843bd7260211d377f2e6",
     "C:/Program Files/Git/UOCJob/favicon.ico": "84161b857f5c547e3699ddfbffc6d8d737542e01",
-    "C:/Program Files/Git/UOCJob/index.html": "921dd868b38052ae6169b8cb06865c1010141867",
+    "C:/Program Files/Git/UOCJob/index.html": "e45c856f2ea9121b19bbe9dc48ebb1018cf9c76e",
     "C:/Program Files/Git/UOCJob/lock_bg.e22325c1cdc3a1591268.jpg": "307ea255e7831a5edda35243a106a03c41140b82",
     "C:/Program Files/Git/UOCJob/login_bg.4e2f642c39de98d0e3c1.jpg": "aa5d0a52df5e87fc5a56fca446c58d1b96b6dc5e",
     "C:/Program Files/Git/UOCJob/main.d5e54c46e6fc42861a62.js": "36dcf547eaca8af78a977efac03b2a1e329049dc",
